@@ -172,40 +172,6 @@ namespace BandTracker
                 return venueList;
         }
 
-        //     public List<Venue> GetVenues()
-        //     {
-        //         SqlConnection conn = DB.Connection();
-        //         conn.Open();
-        //
-        //         SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id = @BandId;", conn);
-        //
-        //         SqlParameter idBandParam = new SqlParameter("@BandId", this.GetId().ToString());
-        //
-        //         cmd.Parameters.Add(idBandParam);
-        //
-        //         List<Venue> venueList = new List<Venue> {};
-        //
-        //         SqlDataReader rdr = cmd.ExecuteReader();
-        //
-        //         while (rdr.Read())
-        //         {
-        //             int venueId = rdr.GetInt32(0);
-        //             string venueName = rdr.GetString(1);
-        //             Venue newVenue = new Venue(venueName, venueId);
-        //             venueList.Add(newVenue);
-        //         }
-        //
-        //         if (rdr != null)
-        //         {
-        //             rdr.Close();
-        //         }
-        //         if (conn != null)
-        //         {
-        //             conn.Close();
-        //         }
-        //         return venueList;
-        //     }
-
             public void Delete()
         {
             SqlConnection conn = DB.Connection();
@@ -253,7 +219,6 @@ namespace BandTracker
               conn.Close();
           }
       }
-
 
         public static void DeleteAll()
         {
