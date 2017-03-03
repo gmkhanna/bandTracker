@@ -2,51 +2,78 @@
     Layout = "Shared/_Layout.cshtml";
 }
 
-
-
-  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+<div class="off-canvas position-bottom" id="offCanvasBottom" data-transition="overlap" style="max-height: 130px;" data-off-canvas>
 
     <!-- Close button -->
     <button class="close-button" aria-label="Close menu" type="button" data-close>
-      <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
     </button>
 
     <!-- Menu -->
-    <ul class="vertical menu">
-      <li><a href="/all_bands">Bands</a></li>
-      <li><a href="/all_venues">Venues</a></li>
+    <ul class="horizontal menu">
+        <li><a href="/all_bands">Bands</a></li>
+        <li><a href="/all_venues">Venues</a></li>
     </ul>
-  </div>
+</div>
 
-  <div class="off-canvas-content" data-off-canvas-content>
+<div class="off-canvas-content" data-off-canvas-content>
     <!-- THE page content lives here -->
-<br><br>
 
-<div class="row">
-    <div class="medium-6 columns">
-        <form action="/band-added" method="post">
-            <input type="text" name="band-added" placeholder="Add a Band">
-            <button class="hollow button" href="/">Add</button>
-        </form>
+    <div class="row">
+      <div class="small-8 large-centered columns">
+      <div class="orbit" role="region" aria-label="Dishes" data-orbit>
+        <ul class="orbit-container">
+            <li class="is-active orbit-slide">
+              <div>
+                <h3 class="text-center">Groupie Fanatacism!</h3>
+                <h4 class="text-center">Your main stop in knowing where your favorite bands are performing.</h4>
+              </div>
+            </li>
+          <li class="orbit-slide">
+            <div>
+              <h3 class="text-center">Add a Band</h3>
+              <h4 class="text-center">Personalize a list of bands you want to keep track of.</h4>
+            </div>
+          </li>
+          <li class="orbit-slide">
+            <div>
+              <h3 class="text-center">List out the Venues</h3>
+              <p class="text-center">Where have your favorite bands been, where will they be?</p>
+              <h3 class="text-center">Keep that Groupie Love going.</h3>
+            </div>
+          </li>
+        </ul>
+        <nav class="orbit-bullets">
+         <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+         <button data-slide="1"><span class="show-for-sr">First slide details.</span></button>
+         <button data-slide="2"><span class="show-for-sr">Second slide details.</span></button>
+         <button data-slide="3"><span class="show-for-sr">Third slide details.</span></button>
+       </nav>
+      </div>
+      </div>
     </div>
 
-    <div class="medium-6 columns">
-        <form action="/venue-added" method="post">
-            <input type="text" name="venue-added" placeholder="Add a Venue">
-            <button class="hollow button" href="/">Add</button>
-        </form>
+    <div class="row">
+        <div class="small-5 columns">
+            <form action="/band-added" method="post">
+                <input type="text" name="band-added" placeholder="Add a Band">
+                <button class="hollow button" href="/">Add</button>
+            </form>
+        </div>
+
+        <div class="small-5 columns">
+            <form action="/venue-added" method="post">
+                <input type="text" name="venue-added" placeholder="Add a Venue">
+                <button class="hollow button" href="/">Add</button>
+            </form>
+        </div>
     </div>
-</div>
 
-
-<div class="row">
-    <div class="large-4 columns"></div>
-    <div class="large-4 columns">
-        <button type="button" class="button" data-toggle="offCanvasLeft">Menu</button>
+    <div class="row align-center">
+        <div class="column small-5"></div>
+        <div class="column small-7">
+            <button type="button" class="button" data-toggle="offCanvasBottom">Menu</button>
+        </div>
     </div>
-    <div class="large-4 columns"></div>
-</div>
-
-
-<!-- PUT page content above this DIV -->
+    <!-- PUT page content above this DIV -->
 </div>
