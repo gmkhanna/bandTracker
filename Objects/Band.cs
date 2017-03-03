@@ -118,60 +118,60 @@ namespace BandTracker
             return foundBand;
         }
 
-        // public void AddVenue(Venue newVenue)
-        // {
-        //     SqlConnection conn = DB.Connection();
-        //     conn.Open();
-        //
-        //     SqlCommand cmd = new SqlCommand("INSERT INTO cookbook (venue_id, band_id) VALUES (@VenueId, @BandId);", conn);
-        //
-        //     SqlParameter idVenueParam = new SqlParameter("@VenueId", newVenue.GetId());
-        //     SqlParameter idBandParam = new SqlParameter("@BandId", this.GetId());
-        //
-        //     cmd.Parameters.Add(idVenueParam);
-        //     cmd.Parameters.Add(idBandParam);
-        //
-        //     cmd.ExecuteNonQuery();
-        //
-        //     if (conn != null)
-        //     {
-        //         conn.Close();
-        //     }
-        // }
-        //
-        //     public List<Venue> GetVenues()
-        //     {
-        //         SqlConnection conn = DB.Connection();
-        //         conn.Open();
-        //
-        //         SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN cookbook ON (bands.id = cookbook.band_id) JOIN venues ON (cookbook.venue_id = venues.id) WHERE bands.id = @BandId;", conn);
-        //
-        //         SqlParameter idBandParam = new SqlParameter("@BandId", this.GetId().ToString());
-        //
-        //         cmd.Parameters.Add(idBandParam);
-        //
-        //         List<Venue> venueList = new List<Venue> {};
-        //
-        //         SqlDataReader rdr = cmd.ExecuteReader();
-        //
-        //         while (rdr.Read())
-        //         {
-        //             int venueId = rdr.GetInt32(0);
-        //             string venueName = rdr.GetString(1);
-        //             Venue newVenue = new Venue(venueName, venueId);
-        //             venueList.Add(newVenue);
-        //         }
-        //
-        //         if (rdr != null)
-        //         {
-        //             rdr.Close();
-        //         }
-        //         if (conn != null)
-        //         {
-        //             conn.Close();
-        //         }
-        //         return venueList;
-        //     }
+        public void AddVenue(Venue newVenue)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO bands_venues (venue_id, band_id) VALUES (@VenueId, @BandId);", conn);
+
+            SqlParameter idVenueParam = new SqlParameter("@VenueId", newVenue.GetId());
+            SqlParameter idBandParam = new SqlParameter("@BandId", this.GetId());
+
+            cmd.Parameters.Add(idVenueParam);
+            cmd.Parameters.Add(idBandParam);
+
+            cmd.ExecuteNonQuery();
+
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+            public List<Venue> GetVenues()
+            {
+                SqlConnection conn = DB.Connection();
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id = @BandId;", conn);
+
+                SqlParameter idBandParam = new SqlParameter("@BandId", this.GetId().ToString());
+
+                cmd.Parameters.Add(idBandParam);
+
+                List<Venue> venueList = new List<Venue> {};
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    int venueId = rdr.GetInt32(0);
+                    string venueName = rdr.GetString(1);
+                    Venue newVenue = new Venue(venueName, venueId);
+                    venueList.Add(newVenue);
+                }
+
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                return venueList;
+            }
 
             public void Delete()
         {

@@ -17,7 +17,7 @@ namespace BandTracker
         public void Test_SaveAssignsIdToObject()
         {
             //Arrange
-            Band firstBand = new Band("Curry");
+            Band firstBand = new Band("Cameo");
             firstBand.Save();
 
             //Act
@@ -34,7 +34,7 @@ namespace BandTracker
        public void Test_Find_FindsBandInDatabase()
        {
            //Arrange
-           Band firstBand = new Band("Salmon");
+           Band firstBand = new Band("Cameo");
            firstBand.Save();
 
            //Act
@@ -44,14 +44,32 @@ namespace BandTracker
            Assert.Equal(firstBand, result);
        }
 
+       [Fact]
+       public void Test_AddVenue_AddsVenueToBand()
+       {
+           Band testBand = new Band("Cameo");
+           testBand.Save();
+
+           Venue testVenue1 = new Venue("Yoshis");
+           testVenue1.Save();
+
+           testBand.AddVenue(testVenue1);
+
+           List<Venue> result = testBand.GetVenues();
+           List<Venue> testList = new List<Venue>{testVenue1};
+
+           Assert.Equal(result, testList);
+
+       }
+
     //    [Fact]
     //     public void Test_AddBand_AddsBandToBand()
     //     {
     //         //Arrange
-    //         Band testBand = new Band("Spicy");
+    //         Band testBand = new Band("Cameo");
     //         testBand.Save();
        //
-    //         Venue testVenue = new Venue("Salmon", "Salmon", "Boil", "3");
+    //         Venue testVenue = new Venue("Yoshis");
     //         testVenue.Save();
        //
     //         //Act
