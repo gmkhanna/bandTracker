@@ -4,11 +4,11 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Cookbook
+namespace BandTracker
 {
-    public class CategoryTest : IDisposable
+    public class BandTest : IDisposable
     {
-        public CategoryTest()
+        public BandTest()
         {
             DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=cookbook_test;Integrated Security=SSPI;";
         }
@@ -17,57 +17,57 @@ namespace Cookbook
         public void Test_SaveAssignsIdToObject()
         {
             //Arrange
-            Category firstCategory = new Category("Curry");
-            firstCategory.Save();
+            Band firstBand = new Band("Curry");
+            firstBand.Save();
 
             //Act
-            Category savedCategory = Category.GetAll()[0];
+            Band savedBand = Band.GetAll()[0];
 
-            int result = savedCategory.GetId();
-            int testId = firstCategory.GetId();
+            int result = savedBand.GetId();
+            int testId = firstBand.GetId();
 
             //Assert
             Assert.Equal(testId, result);
         }
 
         [Fact]
-       public void Test_Find_FindsCategoryInDatabase()
+       public void Test_Find_FindsBandInDatabase()
        {
            //Arrange
-           Category firstCategory = new Category("Salmon");
-           firstCategory.Save();
+           Band firstBand = new Band("Salmon");
+           firstBand.Save();
 
            //Act
-           Category result = Category.Find(firstCategory.GetId());
+           Band result = Band.Find(firstBand.GetId());
 
            //Assert
-           Assert.Equal(firstCategory, result);
+           Assert.Equal(firstBand, result);
        }
 
-       [Fact]
-        public void Test_AddCategory_AddsCategoryToCategory()
-        {
-            //Arrange
-            Category testCategory = new Category("Spicy");
-            testCategory.Save();
-
-            Recipe testRecipe = new Recipe("Salmon", "Salmon", "Boil", "3");
-            testRecipe.Save();
-
-            //Act
-            testCategory.AddRecipe(testRecipe);
-
-            List<Recipe> result = testCategory.GetRecipes();
-            List<Recipe> testList = new List<Recipe>{testRecipe};
-
-            //Assert
-            Assert.Equal(testList, result);
-        }
+    //    [Fact]
+    //     public void Test_AddBand_AddsBandToBand()
+    //     {
+    //         //Arrange
+    //         Band testBand = new Band("Spicy");
+    //         testBand.Save();
+       //
+    //         Venue testVenue = new Venue("Salmon", "Salmon", "Boil", "3");
+    //         testVenue.Save();
+       //
+    //         //Act
+    //         testBand.AddVenue(testVenue);
+       //
+    //         List<Venue> result = testBand.GetVenues();
+    //         List<Venue> testList = new List<Venue>{testVenue};
+       //
+    //         //Assert
+    //         Assert.Equal(testList, result);
+    //     }
 
         public void Dispose()
         {
-            Category.DeleteAll();
-            Recipe.DeleteAll();
+            Band.DeleteAll();
+            // Venue.DeleteAll();
         }
     }
 }
