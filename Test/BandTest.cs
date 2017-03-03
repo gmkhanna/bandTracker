@@ -52,35 +52,36 @@ namespace BandTracker
 
            Venue testVenue1 = new Venue("Yoshis");
            testVenue1.Save();
+           Venue testVenue2 = new Venue("Yoshis");
+           testVenue2.Save();
 
            testBand.AddVenue(testVenue1);
+           testBand.AddVenue(testVenue2);
+
 
            List<Venue> result = testBand.GetVenues();
-           List<Venue> testList = new List<Venue>{testVenue1};
+           List<Venue> testList = new List<Venue>{testVenue1, testVenue2};
 
            Assert.Equal(result, testList);
 
        }
 
-    //    [Fact]
-    //     public void Test_AddBand_AddsBandToBand()
-    //     {
-    //         //Arrange
-    //         Band testBand = new Band("Cameo");
-    //         testBand.Save();
-       //
-    //         Venue testVenue = new Venue("Yoshis");
-    //         testVenue.Save();
-       //
-    //         //Act
-    //         testBand.AddVenue(testVenue);
-       //
-    //         List<Venue> result = testBand.GetVenues();
-    //         List<Venue> testList = new List<Venue>{testVenue};
-       //
-    //         //Assert
-    //         Assert.Equal(testList, result);
-    //     }
+       [Fact]
+       public void Test_GetVenues_RetrievesListOfAllVenuesBandPerformed()
+       {
+           Band testBand = new Band("Cameo");
+           testBand.Save();
+
+           Venue testVenue1 = new Venue("Yoshis");
+           testVenue1.Save();
+           Venue testVenue2 = new Venue("House of Blues");
+           testVenue2.Save();
+
+           testBand.AddVenue(testVenue1);
+
+           List<Venue> testresult = new List<Venue>{testVenue1};
+           List<Venue> result = testBand.GetVenues();
+       }
 
         public void Dispose()
         {
