@@ -204,49 +204,6 @@ namespace BandTracker
       }
     }
 
-    // public static List<Venue> SearchedIngredient(string queryIngredient)
-    // {
-    //   List<Venue> MatchedVenues = new List<Venue> {};
-    //   string[] stringArray;
-    //
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("SELECT * FROM venues;", conn);
-    //   SqlDataReader rdr = cmd.ExecuteReader();
-    //
-    //   while(rdr.Read())
-    //   {
-    //     int venueId = rdr.GetInt32(0);
-    //     string venueName = rdr.GetString(1);
-    //     string venueIngredients = rdr.GetString(2);
-    //     string venueInstructions = rdr.GetString(3);
-    //     string rating = rdr.GetString(4);
-    //
-    //     stringArray = venueIngredients.Split();
-    //
-    //     for (int i = 0; i < stringArray.Length; i++)
-    //     {
-    //       if (stringArray[i] == queryIngredient)
-    //       {
-    //       Venue searchedIngredient = new Venue(venueName, venueIngredients, venueInstructions, rating, venueId);
-    //       MatchedVenues.Add(searchedIngredient);
-    //       }
-    //     }
-    //   }
-    //
-    //   if(rdr != null)
-    //   {
-    //     rdr.Close();
-    //   }
-    //   if(conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    //   return MatchedVenues;
-    // }
-
-
     public void Delete()
     {
       SqlConnection conn = DB.Connection();
