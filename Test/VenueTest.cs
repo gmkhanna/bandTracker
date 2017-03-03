@@ -44,25 +44,49 @@ namespace BandTracker
            Assert.Equal(firstVenue, result);
        }
 
-    //    [Fact]
-    //     public void Test_AddBand_AddsBandToVenue()
-    //     {
-    //         //Arrange
-    //         Venue testVenue = new Venue("Salmon");
-    //         testVenue.Save();
-       //
-    //         Band testBand = new Band("Soup");
-    //         testBand.Save();
-       //
-    //         //Act
-    //         testVenue.AddBand(testBand);
-       //
-    //         List<Band> result = testVenue.GetBands();
-    //         List<Band> testList = new List<Band>{testBand};
-       //
-    //         //Assert
-    //         Assert.Equal(testList, result);
-    //     }
+       [Fact]
+        public void Test_AddBand_AddsBandToVenue()
+        {
+            //Arrange
+            Venue testVenue = new Venue("Cameo");
+            testVenue.Save();
+
+            Band testBand = new Band("Yoshis");
+            testBand.Save();
+            Band testBand2 = new Band("House of Blues");
+            testBand2.Save();
+
+            //Act
+            testVenue.AddBand(testBand);
+            testVenue.AddBand(testBand2);
+
+            List<Band> result = testVenue.GetBands();
+            List<Band> testList = new List<Band>{testBand, testBand2};
+
+            //Assert
+            Assert.Equal(testList, result);
+        }
+
+        [Fact]
+         public void Test_GetBands_RetrievesBandFromVenue()
+         {
+             //Arrange
+             Venue testVenue = new Venue("Salmon");
+             testVenue.Save();
+
+             Band testBand = new Band("Soup");
+             testBand.Save();
+
+             //Act
+             testVenue.AddBand(testBand);
+
+             List<Band> result = testVenue.GetBands();
+             List<Band> testList = new List<Band>{testBand};
+
+             //Assert
+             Assert.Equal(testList, result);
+         }
+
 
         public void Dispose()
         {
