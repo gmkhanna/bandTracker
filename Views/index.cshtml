@@ -1,0 +1,52 @@
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+
+
+
+  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+
+    <!-- Close button -->
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <!-- Menu -->
+    <ul class="vertical menu">
+      <li><a href="/all_bands">Bands</a></li>
+      <li><a href="/all_venues">Venues</a></li>
+    </ul>
+  </div>
+
+  <div class="off-canvas-content" data-off-canvas-content>
+    <!-- THE page content lives here -->
+<br><br>
+
+<div class="row">
+    <div class="medium-6 columns">
+        <form action="/band-added" method="post">
+            <input type="text" name="band-added" placeholder="Add a Band">
+            <button class="hollow button" href="/">Add</button>
+        </form>
+    </div>
+
+    <div class="medium-6 columns">
+        <form action="/venue-added" method="post">
+            <input type="text" name="venue-added" placeholder="Add a Venue">
+            <button class="hollow button" href="/">Add</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="large-4 columns"></div>
+    <div class="large-4 columns">
+        <button type="button" class="button" data-toggle="offCanvasLeft">Menu</button>
+    </div>
+    <div class="large-4 columns"></div>
+</div>
+
+
+<!-- PUT page content above this DIV -->
+</div>
