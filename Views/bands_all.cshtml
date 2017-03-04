@@ -1,0 +1,19 @@
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+
+<h2>List of Bands</h2>
+
+@if (Model.Count != 0)
+{
+  <ul>
+    @foreach (var band in Model)
+    {
+      <li><a href='/band/@band.GetId()/manage'>@band.GetName()</a> | <a href="/band/@band.GetId()/manage">Manage</a></li>
+    }
+  </ul>
+}
+
+
+
+<a href="/" class="hollow button">Home</a>

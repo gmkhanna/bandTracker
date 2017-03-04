@@ -1,0 +1,18 @@
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+
+<h2>List of Venues</h2>
+
+@if (Model.Count != 0)
+{
+  <ul>
+    @foreach (var venue in Model)
+    {
+      <li><a href='/venue/@venue.GetId()/manage'>@venue.GetName()</a> | <a href="/venue/@venue.GetId()/manage">Manage</a></li>
+    }
+  </ul>
+}
+
+
+<a href="/" class="hollow button">Home</a>

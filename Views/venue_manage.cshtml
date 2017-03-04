@@ -1,0 +1,33 @@
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+
+
+<h2>Add Band to Venue</h2>
+<form action="/venues/band-added" method="post">
+  <input id="venue-id" name="venue-id" type="hidden" value='@Model["venue"].GetId()'>
+  <label for="band-id">Select a band</label>
+  <select id="band-id" name="band-id" type="text">
+    @foreach (var band in @Model["bandList"])
+    {
+      <option value='@band.GetId()'>@band.GetName()</option>
+    }
+  </select>
+  <button type="submit">Add</button>
+</form>
+
+<h2>Edit Venue</h2>
+<form action="/venue/@Model["venue"].GetId()/edited" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="venue-name">Venue name:</label>
+  <input id="venue-name" name="venue-name" type="text">
+  <button type="submit">Edit</button>
+</form>
+
+<h2>Delete Venue</h2>
+<form action="/venue/@Model["venue"].GetId()/deleted" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>
+
+<a href="/" class="hollow button">Home</a>

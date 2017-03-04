@@ -11,8 +11,8 @@
 
     <!-- Menu -->
     <ul class="horizontal menu">
-        <li><a href="/all_bands">Bands</a></li>
-        <li><a href="/all_venues">Venues</a></li>
+        <li><a href="/bands">Bands</a></li>
+        <li><a href="/venues">Venues</a></li>
     </ul>
 </div>
 
@@ -55,16 +55,16 @@
 
     <div class="row">
         <div class="small-5 columns">
-            <form action="/band-added" method="post">
-                <input type="text" name="band-added" placeholder="Add a Band">
-                <button class="hollow button" href="/">Add</button>
+            <form action="/bands" method="post">
+                <input type="text" name="band-add" placeholder="Add a Band">
+                <button type="submit" class="hollow button">Add</button>
             </form>
         </div>
 
         <div class="small-5 columns">
-            <form action="/venue-added" method="post">
-                <input type="text" name="venue-added" placeholder="Add a Venue">
-                <button class="hollow button" href="/">Add</button>
+            <form action="/venues" method="post">
+                <input type="text" name="venue-add" placeholder="Add a Venue">
+                <button type="submit" class="hollow button">Add</button>
             </form>
         </div>
     </div>
