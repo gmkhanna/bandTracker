@@ -3,6 +3,20 @@
 }
 
 
+<h2>@Model["venue"].GetName()</h2>
+
+@if (@Model["bandList"].Count != 0)
+{
+  <h4>Here are all the bands which have played in this venue:</h4>
+  <ul>
+    @foreach (var band in @Model["bandList"])
+    {
+      <li> @band.GetName()</li>
+    }
+  </ul>
+}
+
+
 <h2>Add Band to Venue</h2>
 <form action="/venues/band-added" method="post">
   <input id="venue-id" name="venue-id" type="hidden" value='@Model["venue"].GetId()'>
