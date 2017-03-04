@@ -3,7 +3,7 @@
 }
 
 <h2>Add Venue to Band</h2>
-<form action="/venues/venue-added" method="post">
+<form action="/bands/venue-added" method="post">
   <input id="band-id" name="band-id" type="hidden" value='@Model["band"].GetId()'>
   <label for="venue-id">Select a Venue</label>
   <select id="venue-id" name="venue-id" type="text">
@@ -16,15 +16,15 @@
 </form>
 
 <h2>Edit Band</h2>
-<form action="/band/@Model["venue"].GetId()/edited" method="post">
+<form action="/band/@Model["band"].GetId()/edited" method="post">
   <input type="hidden" name="_method" value="PATCH">
-  <label for="band-name">Venue name:</label>
+  <label for="band-name">Band Name:</label>
   <input id="band-name" name="band-name" type="text">
   <button type="submit">Edit</button>
 </form>
 
 <h2>Delete Band</h2>
-<form action="/band/@Model["venue"].GetId()/deleted" method="post">
+<form action="/band/@Model["band"].GetId()/deleted" method="post">
   <input type="hidden" name="_method" value="DELETE">
     <button class="btn btn-danger" type="submit">Delete</button>
 </form>

@@ -75,6 +75,41 @@ namespace BandTracker
                 List<Venue> AllVenues = Venue.GetAll();
                 return View["success.cshtml", AllVenues];
             };
+
+            /////  BAND MANAGEMENT HERE -------------
+            Get["/band/{id}/manage"] = parameters => {
+                Dictionary<string, object> model = new Dictionary<string, object>();
+                Band SelectedBand = Band.Find(parameters.id);
+                List<Venue> BandWVenues = SelectedBand.GetVenues();
+                List<Venue> VenueList = Venue.GetAll();
+                model.Add("band", SelectedBand);
+                model.Add("bandsWVenues", BandWVenues);
+                model.Add("venueList", VenueList);
+                return View["band_manage.cshtml", model];
+            };
+
+            // Band - Add venue to Band
+            Post["/bands/venue-added"] = _ => {
+                  Venue venue = Venue.Find(Request.Form["venue-id"]);
+                  Band band = Band.Find(Request.Form["band-id"]);
+                  band.AddVenue(venue);
+                  return View["success.cshtml"];
+                };
+
+                // Band - edit band
+            Patch["/band/{id}/edited"] = parameters => {
+                Band selectedBand = Band.Find(parameters.id);
+                selectedBand.Update(Request.Form["band-name"]);
+                return View["success.cshtml", selectedBand];
+            };
+
+            // Band - delete Band
+            Delete["/band/{id}/deleted"] = parameters => {
+                Band selectedBand = Band.Find(parameters.id);
+                selectedBand.Delete();
+                List<Band> AllBands = Band.GetAll();
+                return View["success.cshtml", AllBands];
+            };
         }
     }
 }
